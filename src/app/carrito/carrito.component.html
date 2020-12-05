@@ -1,0 +1,19 @@
+<div class="head">
+    <h2>Carrito</h2>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Cantidad</th>
+            <th>Alfajor</th>
+            <th>Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let Alfajor of (cartList$ | async)">
+            <td>{{Alfajor.quantity}}</td>
+            <td>{{Alfajor.name}}</td>
+            <td>${{Alfajor.price}}</td>
+        </tr>
+    </tbody>
+</table>

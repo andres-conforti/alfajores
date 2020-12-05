@@ -1,0 +1,29 @@
+<h2>Listado de productos</h2>
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th></th>
+            <th scope="col">Marca</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Compra</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let alfajor of alfajores">
+            <td><img [src]="alfajor.image" [alt]="alfajor.name" class="img-thumbnail"></td>
+            <td>{{alfajor.name}}</td>
+            <td>{{alfajor.price | currency}}</td>
+            <td><span class="badge badge-warning" *ngIf="alfajor.stock ==0">NO STOCK</span>
+                <span *ngIf="alfajor.stock !=0"></span></td>
+            <td>
+                <app-input-cantidad [(quantity)]="alfajor.quantity" [max]="alfajor.stock" *ngIf="alfajor.stock !=0" (maxProducts)="maxProducts($event)"></app-input-cantidad>
+            </td>
+            <td>
+                <button *ngIf="alfajor.stock!=0" class="btn btn-primary" (click)="addToCart(alfajor)">Comprar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
